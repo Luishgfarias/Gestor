@@ -21,7 +21,7 @@ export function getLocalStorage () {
 export async function loginRequest( username: string, password: string ){
     try {
         
-        const req = await Api.post("api/token/", {username, password})
+        const req = await Api.post("api/login/", {username, password})
         console.log(req.data)
         return req.data
 
