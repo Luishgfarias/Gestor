@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthProvider';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Protect from './pages/Protect';
 import Home from './pages/Home';
+
 function App() {
   return (
     <AuthProvider>

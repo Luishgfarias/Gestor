@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 1rem 0 1rem 0;
+  position: absolute;
+  z-index: 1000;
 }
 .buttons {
   width: 100%;
