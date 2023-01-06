@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useAuth } from '../../context/AuthProvider/useAuth';
 import './style.scss';
-import Menu from '../../components/Menu';
+import Side from '../../components/Menu';
+import { Menu } from 'primereact/menu';
 import Table from '../../components/Table';
 import { currency } from '../../services/api';
 import axios from 'axios';
+import { PanelMenu } from 'primereact/panelmenu';
 
 
 function Home() {
     const [real, setReal] = useState<any>()
+    const [display, setDisplay] = useState('aside')
+    const menu = useRef<any>(null);
+    const auth = useAuth()
     useEffect(() => {
         const req = async () => {
 
@@ -18,8 +23,8 @@ function Home() {
                 .then(
                     async (res) => {
                         const json = res.data['Global Quote']
-                        console.log(json);
-                        await setReal(json['01. symbol'] + json["05. price"] + json['10. change percent'])
+                        console.log(json['10. change percent']);
+                        await setReal(json['01. symbol'] + ' ' + json["05. price"] + ' ' + json['10. change percent'].substr(0, 5) + '%')
 
 
                     }
@@ -30,13 +35,38 @@ function Home() {
                 )
         }
         req()
-    }, [])
+    }, [display])
 
+    const items = [{
+        label: 'Options',
+        items: [
+            {
+                label: 'logOut',
+                command: () => {
+                    auth.logout()
+                    //toast.current.show({ severity: 'success', summary: 'Updated', detail: 'Data Updated', life: 3000 });
+                }
+            },
+        ]
+    }];
 
     return (
         <div className="bodyHome">
-            <Menu />
+            <Side setDisplay={(on: any) => setDisplay(on)} />
+            <div className="header">
+                <div>
+                    <Menu model={items} popup ref={menu} id="popup_menu" />
+                    <Button onClick={(event) => menu.current.toggle(event)}>Menu</Button>
+                </div>
+            </div>
             <div className="Home">
+                <aside className={display}>
+                    <nav>
+                        <div className="item">
+                            <p>logOut</p>
+                        </div>
+                    </nav>
+                </aside>
                 <div className="banner">
                     <div className="content">
                         {
@@ -139,11 +169,13 @@ function Home() {
                         }
                     </div>
                 </div>
-                <div className="buttons">
-                    <Button className='button'> import</Button>
-                    <Button className='button'> export</Button>
+                <div className="tabela">
+                    <div className="buttons">
+                        <Button className='button'> import</Button>
+                        <Button className='button'> export</Button>
+                    </div>
+                    <Table />
                 </div>
-                <Table />
             </div>
         </div>
     );

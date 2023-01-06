@@ -32,18 +32,18 @@ function Login() {
             <div className="content">
                 <p>Login</p>
                 <div className='inputs'>
-                    <input type="text" placeholder='usuário' onChange={(e) => {
+                    <input type="text" value={user.username} placeholder='usuário'onChange={(e) => {
                         setUser({
                             ...user,
                             username: e.target.value
                         })
-                    }}/>
-                    <input type={type} placeholder='senha' onChange={(e) => {
+                    }} />
+                    <input type={type} value={user.password} placeholder='senha' onChange={(e) => {
                         setUser({
                             ...user,
                             password: e.target.value
                         })
-                    }}/>
+                    }} />
                 </div>
                 <Button label="Entrar" aria-label="Submit" onClick={() => {
                     login(user)

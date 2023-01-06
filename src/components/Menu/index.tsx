@@ -7,13 +7,13 @@ import { Api } from '../../services/api';
 import { useAuth } from '../../context/AuthProvider/useAuth';
 import { Button } from 'primereact/button';
 import { AxiosResponse } from 'axios';
-function Menu() {
+function Menu(props: any) {
 
   const auth = useAuth()
   const navigate = useNavigate()
   let req: AxiosResponse<any, any>
-  const [display, setDisplay] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [aside, setAside] = useState(true)
 
   const [form, setForm] = useState({
     username: '',
@@ -34,21 +34,16 @@ function Menu() {
       <img src="home.svg" alt="home" height={40} width={40} onClick={() => {
         navigate('/home')
       }} />
-      <img src="menu.svg" alt="home" height={40} width={40} onClick={() => {
-        setDisplay(!display)
+      <img src="menu.svg" alt="home" className='menuIco' height={40} width={40} onClick={() => {
+        props.setDisplay('asideOn')
+        setAside(!aside)
+        if(aside){
+        setAside(!aside)
+        props.setDisplay('aside')
+        }
       }} />
-      <Sidebar visible={display} onHide={() => setDisplay(!display)}>
-        <div className='buttons'>
-          <div className="button" onClick={() => auth.logout()}>logout</div>
-          <div className="button" onClick={() => {
-            setVisible(!visible)
-            setDisplay(!display)
-          }}>Cadastrar Usuário</div>
-        </div>
-      </Sidebar>
       <Dialog visible={visible} onHide={() => {
         setVisible(!visible)
-        setDisplay(!display)
       }}>
         <div className="form">
           <div className='inputs'>
