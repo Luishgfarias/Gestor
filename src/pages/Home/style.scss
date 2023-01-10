@@ -10,7 +10,13 @@
     height: 7.5%;
     background: #17103f;
     .p-button{
-    background: #17103f !important;
+    background: none !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
     z-index: 1000;
     }
   }

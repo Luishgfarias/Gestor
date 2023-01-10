@@ -56,7 +56,9 @@ function Home() {
             <div className="header">
                 <div>
                     <Menu model={items} popup ref={menu} id="popup_menu" />
-                    <Button onClick={(event) => menu.current.toggle(event)}>Menu</Button>
+                    <Button onClick={(event) => menu.current.toggle(event)} className='popMenu'>
+                        <img src="menu.svg" alt="" width={30} />
+                    </Button>
                 </div>
             </div>
             <div className="Home">
