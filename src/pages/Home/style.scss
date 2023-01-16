@@ -100,17 +100,20 @@
       .aside {
         display: none;
       }
+      .banner{
+        top: 7.5vh;
+      }
       .asideOn {
         display: flex;
         justify-content: space-between;
         z-index: 100;
         background: #0000006e;
         margin: 0;
-        padding: 0 12.5vw 0 0;
+        padding: 0 1.5vw 0 0;
         bottom: 0;
-        left: 10vw;
+        left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 92.5vh;
         position: fixed;
         nav {
           background: #22185e;
@@ -128,7 +131,7 @@
         animation: animate 0.3s linear;
         @keyframes animate {
           0% {
-            transform: translate(-10vw, 0);
+            transform: translate(-5vw, 0);
           }
           100% {
             transform: translate(0, 0);
