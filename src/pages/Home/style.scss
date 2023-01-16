@@ -35,6 +35,8 @@
           display: flex;
           align-items: center;
           cursor: pointer;
+          color: #f1f1f1;
+          font-size: 1rem;
         }
       }
     }
@@ -122,6 +124,9 @@
           flex-direction: column;
           width: 40%;
           padding-left: .5rem;
+          
+          color: #f1f1f1;
+          font-size: 1rem;
         }
         span{
           margin: 0;
