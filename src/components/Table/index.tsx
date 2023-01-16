@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridValueGetterParams, GridToolbar } from '@mui/x-data-grid';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -36,12 +36,13 @@ const rows = [
 
 export default function Table() {
   return (
-    <div style={{ height: '65vh', width: '50vw' }}>
+    <div style={{ height: '55vh', width: '90%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
+        components={{ Toolbar: GridToolbar }}
         checkboxSelection
       />
     </div>

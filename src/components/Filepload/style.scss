@@ -1,0 +1,20 @@
+.inputCamp{
+  border: dashed 1px #3022817e;
+  border-radius: .5rem;
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input[type="file"] {
+    display: none;
+}
+label{
+  cursor: pointer;
+  color: black;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+}

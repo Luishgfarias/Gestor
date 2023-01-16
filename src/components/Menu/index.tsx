@@ -31,17 +31,22 @@ function Menu(props: any) {
 
   return (
     <div className='menu'>
-      <img src="home.svg" alt="home" height={40} width={40} onClick={() => {
-        navigate('/home')
-      }} />
-      <img src="menu.svg" alt="home" className='menuIco' height={40} width={40} onClick={() => {
-        props.setDisplay('asideOn')
-        setAside(!aside)
-        if(aside){
-        setAside(!aside)
-        props.setDisplay('aside')
-        }
-      }} />
+      <div className='group'>
+        <img src="home.svg" alt="home" height={50} width={50} onClick={() => {
+          navigate('/home')
+        }} />
+        <img src="menu.svg" alt="home" className='menuIco' height={35} width={35} onClick={() => {
+          props.setDisplay('none')
+          setAside(!aside)
+          if (aside) {
+            setAside(!aside)
+            props.setDisplay('asideOn')
+          }
+        }} />
+      </div>
+      <img src="logout.svg" alt="home" height={30} width={30} onClick={() => {
+          auth.logout()
+        }} />
       <Dialog visible={visible} onHide={() => {
         setVisible(!visible)
       }}>
