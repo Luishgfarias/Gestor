@@ -9,7 +9,7 @@ const FileUpload = (props: any) => {
     <div className="inputCamp">
       <label htmlFor="input">
         <img src="upload.png" alt="" width={25} height={25}/>
-        <h5>UPLOAD FILES</h5>
+        <h5>IMPORTAR ARQUIVOS</h5>
       </label>
       <input type="file" ref={fileInputField} name='input' id="input"/>
     </div>

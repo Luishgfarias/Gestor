@@ -4,10 +4,8 @@
   height: 100vh;
   display: flex;
   .Home {
-    width: 95%;
-    height: 100%;
+    flex: 1;
     background: none;
-    position: absolute;
     right: 0;
     bottom: 0;
     display: flex;
@@ -15,31 +13,6 @@
     justify-content: flex-end;
     padding: 0;
     gap: 2rem;
-    .asideOn {
-      display: none;
-    }
-    .none {
-      display: none;
-    }
-    .aside {
-      width: 20rem;
-      background: #22185e;
-      height: 100vh;
-      padding: 2rem;
-      transition: 2s;
-      z-index: 100;
-      nav {
-        .item {
-          width: 100%;
-          height: 20%;
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          color: #f1f1f1;
-          font-size: 1rem;
-        }
-      }
-    }
     .tabela {
       width: 100% !important;
       display: flex;
@@ -99,51 +72,7 @@
 @media (width <= 560px) {
   .bodyHome {
     .Home {
-    justify-content: center;
-      .aside {
-        display: none;
-      }
-      .banner{
-        top: 7.5vh;
-      }
-      .asideOn {
-        display: flex;
-        justify-content: space-between;
-        z-index: 100;
-        background: #0000006e;
-        margin: 0;
-        padding: 0 1.5vw 0 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 92.5vh;
-        position: fixed;
-        nav {
-          background: #22185e;
-          display: flex;
-          flex-direction: column;
-          width: 40%;
-          padding-left: .5rem;
-          
-          color: #f1f1f1;
-          font-size: 1rem;
-        }
-        span{
-          margin: 0;
-          color: #f5f5f5;
-          font-size: 1.5rem;
-          cursor: pointer;
-        }
-        animation: animate 0.3s linear;
-        @keyframes animate {
-          0% {
-            transform: translate(-5vw, 0);
-          }
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-      }
+      
     }
   }
 }

@@ -30,20 +30,37 @@ function Login() {
     return (
         <div className="Login">
             <div className="content">
+                <img src="placeHolder.jpeg" alt="" />
                 <p>Login</p>
                 <div className='inputs'>
-                    <input type="text" value={user.username} placeholder='usuário'onChange={(e) => {
-                        setUser({
-                            ...user,
-                            username: e.target.value
-                        })
-                    }} />
-                    <input type={type} value={user.password} placeholder='senha' onChange={(e) => {
-                        setUser({
-                            ...user,
-                            password: e.target.value
-                        })
-                    }} />
+                    <div className="input">
+                        <img src="user.svg" alt="" />
+                        <input type="text" value={user.username} placeholder='usuário' onChange={(e) => {
+                            setUser({
+                                ...user,
+                                username: e.target.value
+                            })
+                        }} />
+                    </div>
+                    <div className="input">
+                        <img src="padlock.svg" alt="" />
+                        <input type={type} value={user.password} placeholder='senha' onChange={(e) => {
+                            setUser({
+                                ...user,
+                                password: e.target.value
+                            })
+                        }} />
+                        {
+                        type === 'password' ?
+                        <img src="eye.svg" alt="" onClick={() => setType('text')} style={{
+                            cursor: 'pointer'
+                        }}/>
+                        :
+                        <img src="hidden.svg" alt="" onClick={() => setType('password')} style={{
+                            cursor: 'pointer'
+                        }}/>
+                        }
+                    </div>
                 </div>
                 <Button label="Entrar" aria-label="Submit" onClick={() => {
                     login(user)

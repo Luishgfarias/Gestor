@@ -13,7 +13,7 @@ function Menu(props: any) {
   const navigate = useNavigate()
   let req: AxiosResponse<any, any>
   const [visible, setVisible] = useState(false)
-  const [aside, setAside] = useState(true)
+  const [menu, setMenu] = useState('menu')
 
   const [form, setForm] = useState({
     username: '',
@@ -30,25 +30,49 @@ function Menu(props: any) {
   }
 
   return (
-    <div className='menu'>
+    <><div className={menu}>
       <div className='group'>
-        <img src="home.svg" alt="home" height={50} width={50} onClick={() => {
-          navigate('/home')
-        }} />
-        <img src="menu.svg" alt="home" className='menuIco' height={35} width={35} onClick={() => {
-          props.setDisplay('none')
-          setAside(!aside)
-          if (aside) {
-            setAside(!aside)
-            props.setDisplay('asideOn')
-          }
-        }} />
+        <div className="item">
+          <img src="home.svg" alt="home" height={50} width={50} onClick={() => {
+            navigate('/home');
+          }} />
+          <h4>Home</h4>
+        </div>
       </div>
-      <img src="logout.svg" alt="home" height={30} width={30} onClick={() => {
-          auth.logout()
+      {menu === 'menu' ?
+      <div className='item' onClick={() => {
+        if (menu === 'menu') {
+          setMenu('close')
+        }
+        else {
+          setMenu('menu')
+        }
+      }}> 
+        <img src="next.svg"  height={35} width={35}  alt=""   style={{ rotate: '180deg' }}/>
+        <h4>Diminuir</h4>
+      </div> 
+      :
+      <div className='item' onClick={() => {
+        if (menu === 'menu') {
+          setMenu('close')
+        }
+        else {
+          setMenu('menu')
+        }
+      }}> 
+        <img src="next.svg"  height={35} width={35}  alt=""/>
+        <h4>Diminuir</h4>
+      </div>
+    }
+      <div className="item">
+        <img src="logout.svg" alt="home" height={30} width={30} onClick={() => {
+          auth.logout();
         }} />
+        <h4>Sair</h4>
+      </div>
+    </div>
       <Dialog visible={visible} onHide={() => {
-        setVisible(!visible)
+        setVisible(!visible);
       }}>
         <div className="form">
           <div className='inputs'>
@@ -56,35 +80,34 @@ function Menu(props: any) {
               setForm({
                 ...form,
                 username: e.target.value
-              })
+              });
             }} />
             <input type="email" placeholder='Email' onChange={(e) => {
               setForm({
                 ...form,
                 email: e.target.value
-              })
+              });
             }} />
             <input type='password' placeholder='senha' onChange={(e) => {
               setForm({
                 ...form,
                 password: e.target.value
-              })
+              });
             }} />
           </div>
           <Button className='button' label="Entrar" aria-label="Submit" onClick={() => {
             if (form.email === '') {
-              alert('Insira um email válido!')
+              alert('Insira um email válido!');
             } else if (form.username === '') {
-              alert('Insira um node de usuário válido!')
+              alert('Insira um node de usuário válido!');
             } else if (form.password === '') {
-              alert('Insira uma senha válida!')
+              alert('Insira uma senha válida!');
             } else {
-              register(form)
+              register(form);
             }
           }} />
         </div>
-      </Dialog>
-    </div>
+      </Dialog></>
   );
 }
 

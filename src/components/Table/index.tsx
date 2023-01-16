@@ -36,7 +36,7 @@ const rows = [
 
 export default function Table() {
   return (
-    <div style={{ height: '55vh', width: '90%' }}>
+    <div style={{ height: '55vh', width: '50vw' }}>
       <DataGrid
         rows={rows}
         columns={columns}

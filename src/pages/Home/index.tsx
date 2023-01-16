@@ -3,8 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useAuth } from '../../context/AuthProvider/useAuth';
 import './style.scss';
-import Side from '../../components/Menu';
-import { Menu } from 'primereact/menu';
+import Menu from '../../components/Menu';
 import Table from '../../components/Table';
 import { currency } from '../../services/api';
 import axios from 'axios';
@@ -15,17 +14,20 @@ import FileUpload from '../../components/Filepload';
 function Home() {
     const [real, setReal] = useState<any>()
     const [display, setDisplay] = useState('none')
+    const [aside, setAside] = useState(true)
     const menu = useRef<any>(null);
     const auth = useAuth()
     useEffect(() => {
         const req = async () => {
 
-            await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`)
+            await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=PETR4.SAO&apikey=RRVHTOJID6M79R4S`)
                 .then(
                     async (res) => {
+                        console.log(res.data);
+
                         const json = res.data['Global Quote']
                         console.log(json['10. change percent']);
-                        await setReal(json['01. symbol'] + ' ' + json["05. price"] + ' ' + json['10. change percent'].substr(0, 5) + '%')
+                        await setReal(json['01. symbol'].replace('.SAO', '') + ' ' + 'R$' + json["05. price"].substr(0, 5) + ' ' + json['10. change percent'].substr(0, 5) + '%')
 
 
                     }
@@ -36,7 +38,7 @@ function Home() {
                 )
         }
         req()
-    }, [display])
+    }, [])
 
     const items = [{
         label: 'Options',
@@ -53,35 +55,8 @@ function Home() {
 
     return (
         <div className="bodyHome">
-            <Side setDisplay={(on: any) => setDisplay(on)} />
+            <Menu display= {display} />
             <div className="Home">
-                <aside className={display}>
-                    <nav>
-                        <div className="item">
-                            <p>Menu1</p>
-                        </div>
-                        <div className="item">
-                            <p>Menu2</p>
-                        </div>
-                        <div className="item">
-                            <p>Menu3</p>
-                        </div>
-                    </nav>
-                    <span onClick={() => setDisplay('none')}>X</span>
-                </aside>
-                <aside className='aside'>
-                    <nav>
-                        <div className="item">
-                            <p>Menu1</p>
-                        </div>
-                        <div className="item">
-                            <p>Menu2</p>
-                        </div>
-                        <div className="item">
-                            <p>Menu3</p>
-                        </div>
-                    </nav>
-                </aside>
                 <div className="banner">
                     <div className="content">
                         {

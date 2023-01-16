@@ -20,6 +20,14 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #161616 inset !important;
+    border: none !important;
+}
+input:focus{
+  outline: none;
+}
+input:target{
+  border: none !important;
+
 }
 .css-1knaqv7-MuiButtonBase-root-MuiButton-root {
   color: #22185e !important;
