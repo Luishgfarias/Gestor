@@ -24,6 +24,10 @@ function Menu(props: any) {
     try {
       req = await Api.post('api/register/', form)
       console.log(req.data)
+      if (req.status === 200) {
+        alert('cadastrado com sucesso')
+        setVisible(!visible)
+      }
     } catch (error) {
       alert('Algo deu errado! Confira os dados ou tente novamente mais tarde')
     }
@@ -32,43 +36,57 @@ function Menu(props: any) {
   return (
     <><div className={menu}>
       <div className='group'>
+        {menu === 'menu' ?
+          <div className='item' onClick={() => {
+            if (menu === 'menu') {
+              setMenu('close')
+            }
+            else {
+              setMenu('menu')
+            }
+          }}>
+            <img src="next.svg" height={35} width={35} alt="" style={{ rotate: '180deg' }} />
+            <h4>Diminuir</h4>
+          </div>
+          :
+          <div className='item' onClick={() => {
+            if (menu === 'menu') {
+              setMenu('close')
+            }
+            else {
+              setMenu('menu')
+            }
+          }}>
+            <img src="next.svg" height={30} width={30} alt="" />
+            <h4>Diminuir</h4>
+          </div>
+        }
         <div className="item">
           <img src="home.svg" alt="home" height={50} width={50} onClick={() => {
             navigate('/home');
           }} />
           <h4>Home</h4>
         </div>
+        {/* <div className="item">
+          <img src="customer.svg" alt="home" height={50} width={50} style={{ cursor: 'pointer' }} onClick={() => {
+            setVisible(!visible)
+          }} />
+          <h4>Gerenciamento</h4>
+        </div> */}
       </div>
-      {menu === 'menu' ?
-      <div className='item' onClick={() => {
-        if (menu === 'menu') {
-          setMenu('close')
-        }
-        else {
-          setMenu('menu')
-        }
-      }}> 
-        <img src="next.svg"  height={35} width={35}  alt=""   style={{ rotate: '180deg' }}/>
-        <h4>Diminuir</h4>
-      </div> 
-      :
-      <div className='item' onClick={() => {
-        if (menu === 'menu') {
-          setMenu('close')
-        }
-        else {
-          setMenu('menu')
-        }
-      }}> 
-        <img src="next.svg"  height={35} width={35}  alt=""/>
-        <h4>Diminuir</h4>
-      </div>
-    }
-      <div className="item">
-        <img src="logout.svg" alt="home" height={30} width={30} onClick={() => {
+      <div className="itemLog">
+        <div className="content">
+          <img src="placeholder.png" alt="home" height={40} width={40} onClick={() => {
+            auth.logout();
+          }} />
+          <div>
+            <h4>Alvo</h4>
+            <p>Admin</p>
+          </div>
+        </div>
+        <img className='img' src="logout.svg" alt="home" height={25} width={25} onClick={() => {
           auth.logout();
         }} />
-        <h4>Sair</h4>
       </div>
     </div>
       <Dialog visible={visible} onHide={() => {

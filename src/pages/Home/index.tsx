@@ -57,7 +57,7 @@ function Home() {
         <div className="bodyHome">
             <Menu display= {display} />
             <div className="Home">
-                <div className="banner">
+                {/* <div className="banner">
                     <div className="content">
                         {
                             real
@@ -158,7 +158,7 @@ function Home() {
                             real
                         }
                     </div>
-                </div>
+                </div> */}
                 <div className="tabela">
                     <FileUpload />
                     <Table />
