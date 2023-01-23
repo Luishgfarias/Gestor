@@ -30,7 +30,7 @@ function Login() {
     return (
         <div className="Login">
             <div className="content">
-                <img src="./placeHolder.png" alt="" />
+                <img src="./placeHolder.png" width={75} height={115} alt="" />
                 <p>Login</p>
                 <div className='inputs'>
                     <div className="input">
