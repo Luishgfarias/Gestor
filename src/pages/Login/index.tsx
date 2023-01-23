@@ -30,7 +30,9 @@ function Login() {
     return (
         <div className="Login">
             <div className="content">
-                <img src="./placeHolder.png" width={75} height={115} alt="" />
+                <img src="./placeHolder.png" alt="user" style={{
+                    zIndex: 100
+                }}/>
                 <p>Login</p>
                 <div className='inputs'>
                     <div className="input">

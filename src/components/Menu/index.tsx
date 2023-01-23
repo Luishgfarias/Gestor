@@ -37,7 +37,7 @@ function Menu(props: any) {
     <><div className={menu}>
       <div className='group'>
         {menu === 'menu' ?
-          <div className='item' onClick={() => {
+          <div className='item alt' onClick={() => {
             if (menu === 'menu') {
               setMenu('close')
             }
@@ -45,11 +45,11 @@ function Menu(props: any) {
               setMenu('menu')
             }
           }}>
-            <img src="next.svg" height={35} width={35} alt="" style={{ rotate: '180deg' }} />
+            <img src="next.svg" height={30} width={30} alt="" style={{ rotate: '180deg' }} />
             <h4>Diminuir</h4>
           </div>
           :
-          <div className='item' onClick={() => {
+          <div className='item alt' onClick={() => {
             if (menu === 'menu') {
               setMenu('close')
             }

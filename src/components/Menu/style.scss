@@ -54,6 +54,12 @@
       cursor: pointer;
     }
   }
+  .alt{
+    border-bottom: #f1f1f173 1px solid;
+    width: 135%;
+    margin-left: .5rem;
+    justify-content: flex-start;
+  }
 }
 .close {
   background-color: #17103f;
