@@ -30,7 +30,7 @@ function Login() {
     return (
         <div className="Login">
             <div className="content">
-                <img src="./placeHolder.png" alt="user" style={{
+                <img src="https://github.com/Luishgfarias.png" alt="user" style={{
                     zIndex: 100
                 }}/>
                 <p>Login</p>
